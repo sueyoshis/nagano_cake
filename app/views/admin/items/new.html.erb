@@ -4,13 +4,17 @@
   <%= f.label :image, "商品画像" %>
   <%= f.attachment_field :image %>
   <%= f.label :name, "商品名" %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: "商品名"%>
   <%= f.label :introduction, "商品説明" %>
-  <%= f.text_area :introduction %>
+  <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %>
   <%= f.label :genre_id, "ジャンル" %>
-  <%= f.select :genre_id,options_from_collection_for_select(Genre.all, :id, :name) %>
+  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: "--選択してください--" } %>
   <%= f.label :price, "税抜価格" %>
-  <%= f.text_field :price %>
-  <!--ここに販売ステータスを追加-->
+  <%= f.text_field :price, placeholder: "1000" %>
+  <%= f.label :is_active, "販売ステータス" %>
+  <%= f.radio_button :is_active, "true" %>
+  <%= f.label :is_active, "販売中" %>
+  <%= f.radio_button :is_active, "false" %>
+  <%= f.label :is_active, "販売停止中" %>
   <%= f.submit "新規登録" %>
 <% end %>
