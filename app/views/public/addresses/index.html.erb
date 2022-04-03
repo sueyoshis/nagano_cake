@@ -2,7 +2,7 @@
 
 <%= form_with model: @address, url: addresses_path do |f| %>
 <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-<%= f.text_field :postal_code %>
+<%= f.text_field :postal_code, autofocus: true %>
 <%= f.label :address, "住所" %>
 <%= f.text_field :address %>
 <%= f.label :name, "宛名" %>

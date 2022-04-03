@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'customers/confirm'
     patch '/customers/quit' => 'customers#quit'
     resource :customers, only: [:edit, :update]
-    resources :addresses, only: [:index, :create, :edit]
+    resources :addresses, only: [:index, :create, :edit, :update]
   end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
