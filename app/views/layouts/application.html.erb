@@ -12,38 +12,48 @@
 
   <body>
     <header>
+      <%= link_to "ながのCAKE", root_path %>
+
       <% if admin_signed_in? %>
-        <li>
-          <%= link_to "商品一覧(admin)", admin_items_path %>
-        </li>
-        <li>
-          <%= link_to "会員一覧", admin_customers_path %>
-        </li>
-        <li>
-          <%= link_to "ジャンル一覧", admin_genres_path %>
-        </li>
-        <li>
-          <%= link_to "ログアウト(admin)", destroy_admin_session_path, method: :delete %>
-        </li>
+        <ul>
+          <li>
+            <%= link_to "商品一覧(admin)", admin_items_path %>
+          </li>
+          <li>
+            <%= link_to "会員一覧", admin_customers_path %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", admin_genres_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト(admin)", destroy_admin_session_path, method: :delete %>
+          </li>
+        </ul>
+      <% elsif customer_signed_in? %>
+        <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+        <ul>        
+          <li>
+            <%= link_to "マイページ", customers_my_page_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト(customer)", destroy_customer_session_path, method: :delete %>
+          </li>
+        </ul>
       <% else %>
-        <li>
-          <%= link_to "ログイン(admin)", new_admin_session_path %>
-        </li>
-      <% end %>
-      <% if customer_signed_in? %>
-        <li>
-          <%= link_to "ログアウト(customer)", destroy_customer_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "About", about_path %>
-        </li>
-        <li>
-          <%= link_to "新規登録(customer)", new_customer_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン(customer)", new_customer_session_path %>
-        </li>
+        <ul>
+          <li>
+            <%= link_to "About", about_path %>
+          </li>
+          <li>
+            <%= link_to "新規登録(customer)", new_customer_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン(customer)", new_customer_session_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン(admin)", new_admin_session_path %>
+          </li>
+        </ul>
       <% end %>
     </header>
     <%= yield %>
