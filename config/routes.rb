@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     patch '/customers/quit' => 'customers#quit'
     resource :customers, only: [:edit, :update]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :items, only: [:index, :show]
   end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]

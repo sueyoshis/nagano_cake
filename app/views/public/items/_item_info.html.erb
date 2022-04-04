@@ -1,0 +1,5 @@
+<% items.each do |item| %>
+  <%= attachment_image_tag item, :image, format: 'jpeg', size: '100x100', fallback: "no_image.jpg" %>
+  <%= item.name %>
+  <%= item.price.to_s(:currency, unit: "¥", precision: 0 ) %>
+<% end %>
