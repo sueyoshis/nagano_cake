@@ -1,2 +1,13 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<%= render 'genre_search', genres: @genres %>
+
+<%= attachment_image_tag @item, :image, format: 'jpeg', size: '150x150', fallback: "no_image.jpg" %>
+
+<%= @item.name %>
+
+<%= @item.introduction %>
+
+<%= @item.with_tax_price.to_s(:currency, unit: "¥", precision:0 ) %><span>(税込)</span>
+
+<p>個数選択</p>
+
+<p>カートに入れる</p>
