@@ -8,9 +8,17 @@
 
 <%= @item.with_tax_price.to_s(:currency, unit: "¥", precision:0 ) %><span>(税込)</span>
 
-<%= form_with model: @cart_item, url: cart_items_path do |f| %>
-  <%= f.select :amount, *[1..10], { include_blank: "個数選択" } %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <%= f.submit "カートに入れる" %>
+<% if @item.is_active %>
+  <p>販売中</p>
+  <% if customer_signed_in? %>
+    <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+      <%= f.select :amount, *[1..10], { include_blank: "個数選択" } %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.submit "カートに入れる" %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>売切れ</p>
 <% end %>
+
