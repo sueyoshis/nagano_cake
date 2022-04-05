@@ -20,8 +20,10 @@
         <%= cart_item.item.with_tax_price.to_s(:delimited) %>
       </td>
       <td>
-        <%= cart_item.amount %>
-        <p>変更</p>
+        <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit "変更" %>
+        <% end %>
       </td>
       <td>
         <%= cart_item.subtotal.to_s(:delimited) %>

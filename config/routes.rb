@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :customers, only: [:edit, :update]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create]
+    resources :cart_items, only: [:index, :create, :update]
   end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
