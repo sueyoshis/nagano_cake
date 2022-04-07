@@ -2,10 +2,10 @@
 
 <%= form_with model: @order, url: new_order_path do |f| %>
 <h4>支払方法</h4>
-<%= f.radio_button :payment_method, "0" %>
-<%= f.label :payment_method, "クレジットカード" %><br>
-<%= f.radio_button :payment_method, "1" %>
-<%= f.label :payment_method, "銀行振込" %>
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 
 <h4>お届け先</h4>
 <p>ご自身の住所</p>
