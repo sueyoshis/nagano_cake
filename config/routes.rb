@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     get '/customers/my_page' => 'customers#show'
     get 'customers/confirm'
-    get 'orders/confirm'
+    post 'orders/confirm'
     get 'orders/thanks'
     patch '/customers/quit' => 'customers#quit'
     resource :customers, only: [:edit, :update]
