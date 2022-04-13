@@ -13,5 +13,13 @@ class Order < ApplicationRecord
     end
     total_price.to_s(:delimited)
   end
+  
+  def total_amount
+    total_amount = 0
+    order_items.each do |order_item|
+      total_amount += order_item.amount
+    end
+    total_amount
+  end
 
 end

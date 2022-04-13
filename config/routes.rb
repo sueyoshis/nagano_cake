@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :admin do
+    get root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
