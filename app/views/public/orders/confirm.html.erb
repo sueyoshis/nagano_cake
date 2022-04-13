@@ -25,7 +25,7 @@
         <td>
           <%= cart_item.subtotal.to_s(:delimited) %>
         </td>
-        <% @sum += cart_item.subtotal %>
+        <% @total_price += cart_item.subtotal %>
       </tr>
     <% end %>
   </tbody>
@@ -40,13 +40,13 @@
   <tr>
     <th>商品合計</th>
     <td>
-      <%= @sum.to_s(:delimited) %>
+      <%= @total_price.to_s(:delimited) %>
     </td>
   </tr>
   <tr>
     <th>請求金額</th>
     <td>
-      <%= (@postage + @sum).to_s(:delimited) %>
+      <%= (@postage + @total_price).to_s(:delimited) %>
     </td>
   </tr>
 </table>
@@ -66,6 +66,6 @@
   <%= f.hidden_field :address, :value => @order.address %>
   <%= f.hidden_field :name, :value => @order.name %>
   <%= f.hidden_field :postage, :value => @postage %>
-  <%= f.hidden_field :billing_amount, :value => (@postage + @sum) %>
+  <%= f.hidden_field :billing_amount, :value => (@postage + @total_price) %>
   <%= f.submit "注文情報を確定する" %>
 <% end %>

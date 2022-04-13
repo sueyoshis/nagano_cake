@@ -1,11 +1,11 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items = CartItem.where(customer_id: current_customer.id)
-    @sum = 0
+    @cart_items = current_customer.cart_items
+    @total_price = 0
   end
 
   def create
-    cart_items = CartItem.where(customer_id: current_customer.id)
+    cart_items = current_customer.cart_items
     if cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item = cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
