@@ -11,7 +11,7 @@ class Order < ApplicationRecord
     order_items.each do |order_item|
       total_price += order_item.subtotal
     end
-    total_price.to_s(:delimited)
+    total_price
   end
   
   def total_amount
