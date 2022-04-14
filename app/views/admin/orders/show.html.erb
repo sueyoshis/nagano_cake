@@ -31,7 +31,10 @@
   <tr>
     <th>注文ステータス</th>
     <td>
-      入金待ち　更新
+      <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+        <%= f.select :status, Order.statuses_i18n.invert %>
+        <%= f.submit "更新" %>
+      <% end %>
     </td>
   </tr>
 </table>
