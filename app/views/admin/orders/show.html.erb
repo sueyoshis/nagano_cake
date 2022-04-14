@@ -65,7 +65,10 @@
           <%= order_item.subtotal.to_s(:delimited) %>
         </td>
         <td>
-          着手不可　更新
+          <%= form_with model: order_item, url: admin_order_order_item_path(order_item), method: :patch do |f| %>
+            <%= f.select :production_status, OrderItem.production_statuses_i18n.invert %>
+            <%= f.submit "更新" %>
+          <% end %>
         </td>
       </tr>
     <% end %>
