@@ -7,15 +7,19 @@ class Public::CartItemsController < ApplicationController
   def create
     cart_items = current_customer.cart_items
     if cart_items.find_by(item_id: params[:cart_item][:item_id])
-      cart_item = cart_items.find_by(item_id: params[:cart_item][:item_id])
-      cart_item.amount += params[:cart_item][:amount].to_i
-      cart_item.save
+      @cart_item = cart_items.find_by(item_id: params[:cart_item][:item_id])
+      @cart_item.amount += params[:cart_item][:amount].to_i
     else
-      cart_item = CartItem.new(cart_item_params)
-      cart_item.customer_id = current_customer.id
-      cart_item.save
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.customer_id = current_customer.id
     end
-    redirect_to cart_items_path
+    if @cart_item.save
+      redirect_to cart_items_path
+    else
+      @genres = Genre.all
+      @item = Item.find (params[:cart_item][:item_id])
+      render 'public/items/show'
+    end
   end
 
   def update

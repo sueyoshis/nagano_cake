@@ -1,4 +1,15 @@
-<%= render 'genre_search', genres: @genres %>
+<%= render 'public/items/genre_search', genres: @genres %>
+
+<% if @cart_item.errors.any? %>
+  <%= @cart_item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @cart_item.errors.full_messages.each do |message| %>
+       <li>
+         <%= message %>
+       </li>
+      <% end %>
+  </ul>
+<% end %>
 
 <%= attachment_image_tag @item, :image, format: 'jpeg', size: '150x150', fallback: "no_image.jpg" %>
 
