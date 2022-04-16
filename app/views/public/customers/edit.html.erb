@@ -1,5 +1,7 @@
 <h2>会員情報編集</h2>
 
+<%= render 'admin/customers/error_form', customer: @customer %>
+
 <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
 
   <%= render '/admin/customers/customer_info',f: f %>

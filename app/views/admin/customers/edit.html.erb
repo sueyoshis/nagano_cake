@@ -1,5 +1,7 @@
 <h2><%= @customer.full_name %>さんの会員情報編集</h2>
 
+<%= render 'error_form', customer: @customer %>
+
 <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
 
   <div class="field">
