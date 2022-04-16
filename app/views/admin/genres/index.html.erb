@@ -1,5 +1,7 @@
 <h2>ジャンル一覧・追加</h2>
 
+<%= render 'error_form', genre: @genre %>
+
 <%= form_with model: @genre, url: admin_genres_path do |f| %>
     <%= f.label :name, "ジャンル名" %>
     <%= f.text_field :name %>
