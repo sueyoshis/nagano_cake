@@ -1,5 +1,7 @@
 <h2>商品編集</h2>
 
+<%= render 'error_form', item: @item %>
+
 <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
   <%= f.label :image, "商品画像" %>
   <%= f.attachment_field :image %>
