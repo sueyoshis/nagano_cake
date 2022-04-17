@@ -1,22 +1,49 @@
-<h2>商品新規登録</h2>
-
-<%= render 'error_form', item: @item %>
-
-<%= form_with model: @item, url: admin_items_path do |f| %>
-  <%= f.label :image, "商品画像" %>
-  <%= f.attachment_field :image %>
-  <%= f.label :name, "商品名" %>
-  <%= f.text_field :name, placeholder: "商品名"%>
-  <%= f.label :introduction, "商品説明" %>
-  <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %>
-  <%= f.label :genre_id, "ジャンル" %>
-  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: "--選択してください--" } %>
-  <%= f.label :price, "税抜価格" %>
-  <%= f.text_field :price, placeholder: "1000" %>
-  <%= f.label :is_active, "販売ステータス" %>
-  <%= f.radio_button :is_active, "true" %>
-  <%= f.label :is_active, "販売中" %>
-  <%= f.radio_button :is_active, "false" %>
-  <%= f.label :is_active, "販売停止中" %>
-  <%= f.submit "新規登録" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-4 mb-5">
+      <h2 class="bg-info text-white text-center p-1">商品新規登録</h2>
+    </div>
+  </div>
+    <%= form_with model: @item, url: admin_items_path do |f| %>
+    <%= render 'error_form', item: @item %>
+    <div class="row d-flex justify-content-center mb-3">
+      <%= f.label:image, "商品画像", class: "form-label col-md-3" %>
+      <%= f.attachment_field :image, class: "col-md-8 col-lg-4" %>
+      <span class="col-1"></span>
+    </div>
+    <div class="row d-flex justify-content-center mb-3">
+      <%= f.label :name, "商品名", class: "form-label col-md-3" %>
+      <%= f.text_field :name, placeholder: "商品名", class: "form-control col-md-8 col-lg-4" %>
+      <span class="col-1"></span>
+    </div>
+    <div class="row d-flex justify-content-center mb-3">
+      <%= f.label :introduction, "商品説明", class: "form-label col-md-3" %>
+      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "form-control col-md-8 col-lg-4" %>
+      <span class="col-1"></span>
+    </div>
+    <div class="row d-flex justify-content-center mb-3">
+      <%= f.label :genre_id, "ジャンル", class: "form-label col-md-3" %>
+      <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: "--選択してください--" }, class: "form-select col-md-8 col-lg-4" %>
+      <span class="col-1"></span>
+    </div>
+    <div class="row d-flex justify-content-center mb-3">
+      <%= f.label :price, "税抜価格", class: "form-label col-md-3" %>
+      <%= f.text_field :price, placeholder: "1000", class: "form-control col-md-8 col-lg-4" %>
+      <span class="col-1">円</span>
+    </div>
+    <div class="row d-flex justify-content-center mb-3">
+      <span class="col-md-3">販売ステータス</span>
+      <div class="col-md-3 col-lg-2">
+        <%= f.radio_button :is_active, "true" %>
+        <%= f.label :is_active, "販売中" %>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <%= f.radio_button :is_active, "false" %>
+        <%= f.label :is_active, "販売停止中" %>
+      </div>
+      <span class="col-md-3 col-lg-1"></span>
+    </div>
+    <div class="row d-flex justify-content-center mb-3">
+      <%= f.submit "新規登録", class: "btn btn-success col-md-4 col-lg-3" %>
+    </div>
+  <% end %>
