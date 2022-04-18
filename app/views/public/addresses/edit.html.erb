@@ -1,13 +1,24 @@
-<h2>配送先編集</h2>
-
-<%= render 'error_form', address: @address %>
-
-<%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
-<%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-<%= f.text_field :postal_code, autofocus: true %>
-<%= f.label :address, "住所" %>
-<%= f.text_field :address %>
-<%= f.label :name, "宛名" %>
-<%= f.text_field :name %>
-<%= f.submit "変更内容を保存" %>
-<% end %>
+<div class="container">
+  <div class="row ">
+    <div class="col-sm-10 col-md-6 col-lg-4 mb-5">
+      <h2 class="bg-info text-white text-center p-1">配送先編集</h2>
+    </div>
+  </div>
+  <%= render 'error_form', address: @address %>
+  <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
+    <div class="row">
+      <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "form-label col-md-4 col-lg-3 mb-3" %>
+      <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000", class: "form-control col-md-4 col-lg-3 mb-3" %>
+    </div>
+    <div class="row">
+      <%= f.label :address, "住所", class: "form-label col-md-4 col-lg-3 mb-3" %>
+      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control col-md-8 col-lg-6 mb-3" %>
+    </div>
+    <div class="row">
+      <%= f.label :name, "宛名", class: "form-label col-md-4 col-lg-3 mb-3" %>
+      <%= f.text_field :name, placeholder: "令和道子", class: "form-control col-md-4 col-lg-3 mb-3" %>
+      <div class="col-md-1 col-lg-3 mb-3"></div>
+      <%= f.submit "変更内容を保存", class: "btn btn-success col-md-3 col-lg-2 mb-3" %>
+    </div>
+  <% end %>
+</div>
