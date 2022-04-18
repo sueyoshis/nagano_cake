@@ -1,10 +1,14 @@
-<% if item.errors.any? %>
-  <%= item.errors.count %>件のエラーが発生しました
-  <ul>
-    <% item.errors.full_messages.each do |message| %>
-       <li>
-         <%= message %>
-       </li>
-      <% end %>
-  </ul>
-<% end %>
+<div class="row">
+  <div class="col-sm-12 col-md-10 mb-1 text-danger">
+    <% if item.errors.any? %>
+      <%= item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% item.errors.full_messages.each do |message| %>
+          <li>
+             <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
