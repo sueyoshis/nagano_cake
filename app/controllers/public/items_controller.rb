@@ -18,4 +18,10 @@ class Public::ItemsController < ApplicationController
     render :index    
   end
   
+  def genre_search
+    @genre = Genre.find(params[:id])
+    @items = Item.where(genre_id: @genre).page(params[:page]).per(8)
+    @genres = Genre.all
+  end
+  
 end

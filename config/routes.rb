@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     post 'orders/confirm'
     get 'orders/thanks'
     get 'search' => 'items#search'
+    get 'genre_search/:id' => 'items#genre_search', as: 'genre_search'
     patch '/customers/quit' => 'customers#quit'
     resource :customers, only: [:edit, :update]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
