@@ -11,4 +11,11 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
   
+  def search
+    @items = Item.search(params[:word]).page(params[:page]).per(8)
+    @genres = Genre.all
+    @active_items = @items
+    render :index    
+  end
+  
 end

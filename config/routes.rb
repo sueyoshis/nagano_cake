@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'customers/confirm'
     post 'orders/confirm'
     get 'orders/thanks'
+    get 'search' => 'items#search'
     patch '/customers/quit' => 'customers#quit'
     resource :customers, only: [:edit, :update]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]

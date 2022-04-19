@@ -15,4 +15,8 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
+  def self.search(word)
+    where(["name like? or introduction like?", "%#{word}%", "%#{word}%"])
+  end
+
 end
