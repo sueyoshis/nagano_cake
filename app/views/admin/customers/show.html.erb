@@ -78,7 +78,7 @@
       <button class="btn btn-sm btn-success">編集する</button>
     <% end %>
     <span class="col-1"></span>
-    <%= link_to admin_root_path do %>
+    <%= link_to admin_customer_order_path(@customer), method: :get do %>
       <button class="btn btn-sm btn-primary">注文履歴一覧を見る</button>
     <% end %>
   </div>

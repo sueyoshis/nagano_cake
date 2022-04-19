@@ -4,45 +4,5 @@
       <h2 class="bg-info text-white text-center p-1">注文履歴一覧</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-11 mx-auto">
-      <table class="table">
-        <thead>
-          <tr class="table-secondary">
-            <th>購入日時</th>
-            <th>購入者</th>
-            <th>注文個数</th>
-            <th>注文ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @orders.each do |order| %>
-            <tr>
-              <td>
-                <%= link_to admin_order_path(order) do %>
-                  <span class="border-bottom border-dark text-dark">
-                    <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
-                  </span>
-                <% end %>
-              </td>
-              <td>
-                <%= order.customer.full_name %>
-              </td>
-              <td>
-                <%= order.total_amount %>
-              </td>
-              <td>
-                <%= order.status_i18n %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 mt-5">
-      <%= paginate @orders %>
-    </div>
-  </div>
+  <%= render 'order_index', orders: @orders %>
 </div>
