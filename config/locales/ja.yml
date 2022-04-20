@@ -18,3 +18,41 @@ ja:
         waiting_for_production: "製作待ち"
         production: "製作中"
         production_completed: "製作完了"
+
+  activerecord:
+    attributes:
+      customer:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"
+        last_name: "名前(姓)"
+        last_name_kana: "フリガナ(セイ)"
+        first_name: "名前(名)"
+        first_name_kana: "フリガナ(メイ)"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number: "電話番号"
+
+      address:
+        name: "宛名"
+        postal_code: "郵便番号"
+        address: "住所"
+        
+      cart_item:
+        amount: "個数"
+        
+      genre:
+        name: "ジャンル名"
+        
+      item:
+        name: "商品名"
+        introduction: "商品説明"
+        price: "税抜価格"
+        genre: "ジャンル"
+        
+      order:
+        postal_code: "お届け先の郵便番号"
+        address: "お届け先の住所"
+        name: "お届け先の宛名"
+        payment_method: "支払方法"
+        
