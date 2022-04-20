@@ -56,6 +56,12 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    if @order.customer_id == current_customer.id
+      render :show
+    else
+      @orders = current_customer.orders.order(created_at: "DESC")
+      redirect_to orders_path
+    end
   end
 
   private

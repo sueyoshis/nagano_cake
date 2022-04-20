@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
-  
+
   before_action :authenticate_customer!
-  
+
   def index
     @address = Address.new
     @addresses = current_customer.addresses
@@ -20,6 +20,13 @@ class Public::AddressesController < ApplicationController
 
   def edit
     @address = Address.find (params[:id])
+    if @address.customer_id == current_customer.id
+      render :edit
+    else
+      @address = Address.new
+      @addresses = current_customer.addresses
+      redirect_to addresses_path
+    end
   end
 
   def update
