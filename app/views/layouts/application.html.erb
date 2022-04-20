@@ -15,13 +15,13 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container d-flex flex-column">
           <div class="container-fluid">
-            <%= link_to "ながのCAKE", root_path, class: "navbar-brand ml-3 my-3" %>
+            <%= link_to "ながのCAKE", root_path, class: "navbar-brand ml-3 my-2" %>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <% if admin_signed_in? %>
-                <ul class="navbar-nav ml-auto my-2">
+                <ul class="navbar-nav ml-auto my-1">
                   <li class="nav-item">
                     <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary btn-sm mx-3 my-1" %>
                   </li>
@@ -39,7 +39,7 @@
                   </li>
                 </ul>
               <% elsif customer_signed_in? %>
-                <ul class="navbar-nav ml-auto my-2">
+                <ul class="navbar-nav ml-auto my-1">
                   <li class="nav-item">
                     <%= link_to "マイページ", customers_my_page_path, class: "btn btn-outline-secondary btn-sm mx-3 my-1" %>
                   </li>
@@ -54,7 +54,7 @@
                   </li>
                 </ul>
               <% else %>
-                <ul class="navbar-nav ml-auto my-2">
+                <ul class="navbar-nav ml-auto my-1">
                   <li class="nav-item">
                     <%= link_to "About", about_path, class: "btn btn-outline-secondary btn-sm mx-3 my-1" %>
                   </li>
@@ -67,9 +67,6 @@
                   <li class="nav-item">
                     <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary btn-sm mx-3 my-1" %>
                   </li>
-                  <li class="nav-item">
-                    <%= link_to "ログイン(admin)", new_admin_session_path, class: "btn btn-outline-secondary btn-sm mx-3 my-1" %>
-                  </li>
                 </ul>
               <% end %>
             </div>
@@ -77,13 +74,15 @@
           <div class="container-fluid">
             <div class="row">
               <% if customer_signed_in? %>
-                <p class="text-info m-3 text-center">ようこそ、<%= current_customer.last_name %>さん！</p>
+                <p class="text-info m-1 text-center">ようこそ、<%= current_customer.last_name %>さん！</p>
               <% end %>
             </div>
             <div class="form-inline">
               <%= form_with url: search_path, local: true, method: :get do |f| %>
-                <%= f.text_field :word, class: "form-control my-3" %>
-                <%= f.submit "検索", class: "btn btn-sm btn-secondary ml-1 my-3" %>
+                <%= f.text_field :word, placeholder: "Search", class: "form-control my-1" %>
+                <%= button_tag :type => "submit" , :class => "btn btn-sm btn-secondary ml-1 my-1" do %>
+                <i class="fas fa-search"></i>
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -94,8 +93,20 @@
     <footer class="bg-secondary text-white mt-5">
       <div class="container">
         <div class="row">
-          <div class="col-12">
+          <div class="col-lg-2">
             <p class="my-3">ながのCAKE</p>
+          </div>
+          <div class="col-lg-5">
+            <p class="my-1">
+              <span><i class="fas fa-map-marker-alt"></i></span> アクセス:〒000-1111 長野県○○市▲▲ □-□<br>
+              <span><i class="fas fa-phone"></i></span> 連絡先：026-●●●●-▽▽▽▽<br>
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <p class="my-1">
+              <span><i class="fas fa-store"></i></span> 営業時間：10:00～17:00<br>
+              <span><i class="fas fa-store-slash"></i></span> 定休日：毎週〇曜日
+            </p>
           </div>
         </div>
       </div>

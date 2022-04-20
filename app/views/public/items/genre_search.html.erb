@@ -4,7 +4,7 @@
       <%= render 'genre_search', genres: @genres %>
     </div>
     <div class="col-md-8 col-lg-9 mb-3">
-      <h3 class="mb-2"><%= @genre.name %>一覧<span> (全<%= @items.count %>件)</span></h3>
+      <h3 class="font-weight-bold mb-2"><%= @genre.name %>一覧<span class="font-weight-light"> (全<%= @items.count %>件)</span></h3>
       <%= render 'item_info', items: @items %>
     </div>
   </div>

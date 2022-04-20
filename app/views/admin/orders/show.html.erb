@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 col-md-6 col-lg-4 mb-5">
+    <div class="col-sm-10 col-md-6 col-lg-4 mb-3">
       <h2 class="bg-info text-white text-center p-1">注文履歴詳細</h2>
     </div>
   </div>
   <div class="row">
     <div class="col-md-8">
-      <table class="table table-borderless">
+      <table class="table table-sm table-borderless">
         <tr>
           <th>購入者</th>
           <td>
@@ -38,9 +38,9 @@
         </tr>
         <tr>
           <th>注文ステータス</th>
-          <td>
+          <td class="form-inline">
             <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
-              <%= f.select :status, Order.statuses_i18n.invert %>
+              <%= f.select :status, Order.statuses_i18n.invert, {}, {class: "form-control form-control-sm"} %>
               <%= f.submit "更新", class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
@@ -75,9 +75,9 @@
               <td>
                 <%= order_item.subtotal.to_s(:delimited) %>
               </td>
-              <td>
+              <td class="form-inline">
                 <%= form_with model: order_item, url: admin_order_order_item_path(order_item), method: :patch do |f| %>
-                  <%= f.select :production_status, OrderItem.production_statuses_i18n.invert %>
+                  <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {}, {class: "form-control form-control-sm"} %>
                   <%= f.submit "更新", class: "btn btn-sm btn-success" %>
                 <% end %>
               </td>
@@ -86,23 +86,23 @@
         </tbody>
       </table>
     </div>
-    <div class="col-lg-3 d-flex align-items-end">
-      <table class="table table-borderless">
+    <div class="col-md-6 col-lg-3 d-flex align-items-end">
+      <table class="table table-sm table-borderless">
         <tr>
           <th>商品合計</th>
-          <td>
+          <td class="text-right">
             <%= @order.total_price.to_s(:currency, format: "%n%u", unit: "円", precision: 0) %>
           </td>
         </tr>
         <tr>
           <th>送料</th>
-          <td>
+          <td class="text-right">
             <%= @order.postage.to_s(:currency, format: "%n%u", unit: "円", precision: 0) %>
           </td>
         </tr>
         <tr>
           <th>請求金額合計</th>
-          <td><%= @order.billing_amount.to_s(:currency, format: "%n%u", unit: "円", precision: 0) %></td>
+          <td class="text-right font-weight-bold"><%= @order.billing_amount.to_s(:currency, format: "%n%u", unit: "円", precision: 0) %></td>
         </tr>
       </table>
     </div>

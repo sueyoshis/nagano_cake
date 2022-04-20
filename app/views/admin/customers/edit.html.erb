@@ -6,7 +6,7 @@
   </div>
   <%= render 'error_form', customer: @customer %>
   <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
-    <div class="row mb-3">
+    <div class="row mb-2">
       <span class="col-md-4 col-lg-3">会員ID</span>
       <div class="col-md-8 col-lg-4">
         <p>
@@ -15,7 +15,7 @@
       </div>
     </div>
     <%= render 'customer_info', f: f %>
-    <div class="row mb-3">
+    <div class="row mb-2">
       <span class="col-md-4 col-lg-3">会員ステータス</span>
       <div class="col-md-2 col-lg-1">
         <%= f.radio_button :is_active, "true" %>
@@ -26,9 +26,9 @@
         <%= f.label :is_active, "退会" %>
       </div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-2">
       <div class="col-md-4 col-lg-3"></div>
-      <%= f.submit "変更を保存", class: "btn btn-success col-md-4 col-lg-3" %>
+      <%= f.submit "変更を保存", class: "btn btn-success col-md-3 col-lg-2" %>
     </div>
   <% end %>
 </div>

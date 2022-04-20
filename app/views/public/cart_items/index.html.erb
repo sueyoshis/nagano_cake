@@ -30,9 +30,9 @@
                 <td>
                   <%= cart_item.item.with_tax_price.to_s(:delimited) %>
                 </td>
-                <td>
+                <td class="form-inline">
                   <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
-                    <%= f.select :amount, *[1..10] %>
+                    <%= f.select :amount, *[1..10], {}, {class: "form-control form-control-sm"} %>
                     <%= f.submit "変更", class: "btn btn-sm btn-success" %>
                   <% end %>
                 </td>
@@ -48,7 +48,9 @@
           </tbody>
         </table>
       <% else %>
-        <p>カートは空です</p>
+        <p class="font-weight-bold text-secondary">
+          <span><i class="fas fa-exclamation-circle"></i></span>カートは空です
+        </p>
       <% end %>
     </div>
   </div>

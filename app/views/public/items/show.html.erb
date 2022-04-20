@@ -35,8 +35,8 @@
           <% if @item.is_active %>
             <p class="font-weight-bold text-success">販売中</p>
             <% if customer_signed_in? %>
-              <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-                <%= f.select :amount, *[1..10], { include_blank: "個数選択" } %>
+              <%= form_with model: @cart_item, url: cart_items_path, class: "form-inline" do |f| %>
+                <%= f.select :amount, *[1..10], { include_blank: "個数選択" }, {class: "form-control"} %>
                 <%= f.hidden_field :item_id, :value => @item.id %>
                 <%= f.submit "カートに入れる", class: "btn btn-sm btn-success ml-3" %>
               <% end %>
